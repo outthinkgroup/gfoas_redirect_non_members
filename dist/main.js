@@ -29749,10 +29749,7 @@ function AppSidebar(_ref) {
   }, []);
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "util-column",
-    ref: column,
-    style: {
-      outline: "1px solid red"
-    }
+    ref: column
   }, /*#__PURE__*/_react.default.createElement("div", {
     ref: box,
     style: {

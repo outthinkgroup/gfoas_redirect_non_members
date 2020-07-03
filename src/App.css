@@ -3,6 +3,8 @@
   --success: #38c172;
   --warn: #ffed4a;
   --primary: #0073aa;
+  --secondary: #efefef;
+  --secondary-hover: #e0e0e0;
 }
 body {
   box-sizing: border-box;
@@ -22,6 +24,7 @@ body * {
   justify-content: space-between;
 }
 .primary-button {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
   background: var(--primary);
   color: white;
   font-size: 18px;
@@ -41,16 +44,17 @@ svg {
   font-size: 18px;
   font-weight: 600;
   border: 1px solid transparent;
-  color: white;
-  fill: white;
-  background: var(--success);
+  color: black;
+  fill: currentColor;
+  background: white;
   padding: 5px 10px;
   border-radius: 2px;
   cursor: pointer;
   margin-left: auto;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
 }
 .add-redirect:hover {
-  background: var(--success);
+  background: var(--secondary);
 }
 .icon-container {
   display: flex;
@@ -90,6 +94,7 @@ label {
 .guarding .input-group .input-group {
   padding-left: 0;
   padding-right: 20px;
+  padding-top: 0;
 }
 .guarding .input-group--small {
   width: 375px;

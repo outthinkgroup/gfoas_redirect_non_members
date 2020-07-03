@@ -40,11 +40,7 @@ export default function AppSidebar({ save, isLoading }) {
   }, []);
 
   return (
-    <div
-      className="util-column"
-      ref={column}
-      style={{ outline: `1px solid red` }}
-    >
+    <div className="util-column" ref={column}>
       <div ref={box} style={{ marginTop: "-42px", paddingTop: `42px` }}>
         <div
           className="cloudbox"
