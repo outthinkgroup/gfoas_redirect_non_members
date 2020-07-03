@@ -29188,72 +29188,7 @@ function _slicedToArray(arr, i) {
 }
 
 module.exports = _slicedToArray;
-},{"./arrayWithHoles":"node_modules/@babel/runtime/helpers/arrayWithHoles.js","./iterableToArrayLimit":"node_modules/@babel/runtime/helpers/iterableToArrayLimit.js","./unsupportedIterableToArray":"node_modules/@babel/runtime/helpers/unsupportedIterableToArray.js","./nonIterableRest":"node_modules/@babel/runtime/helpers/nonIterableRest.js"}],"src/data.json":[function(require,module,exports) {
-module.exports = {
-  "redirects": [{
-    "type": "recipe",
-    "guard_specific": true,
-    "posts_to_guard": [{
-      "name": "Cakes",
-      "id": 99
-    }, {
-      "name": "waffles",
-      "id": 33
-    }, {
-      "name": "brownies",
-      "id": 104
-    }],
-    "settings_id": "group-1",
-    "redirects_to": "/"
-  }],
-  "post_types": ["post", "page", "recipe", "course"],
-  "posts_in": {
-    "post": [{
-      "id": 23,
-      "name": "hello world"
-    }, {
-      "id": 54,
-      "name": "my first post"
-    }, {
-      "id": 3,
-      "name": "post number 3"
-    }],
-    "page": [{
-      "id": 24,
-      "name": "home"
-    }, {
-      "id": 255,
-      "name": "about"
-    }, {
-      "id": 4,
-      "name": "contact"
-    }],
-    "recipe": [{
-      "name": "Cakes",
-      "id": 99
-    }, {
-      "name": "waffles",
-      "id": 33
-    }, {
-      "name": "brownies",
-      "id": 104
-    }, {
-      "name": "free sample",
-      "id": 900
-    }],
-    "course": [{
-      "id": 36,
-      "name": "breakfast fast course"
-    }, {
-      "id": 57,
-      "name": "bread couse"
-    }, {
-      "id": 105,
-      "name": "flour course"
-    }]
-  }
-};
-},{}],"node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+},{"./arrayWithHoles":"node_modules/@babel/runtime/helpers/arrayWithHoles.js","./iterableToArrayLimit":"node_modules/@babel/runtime/helpers/iterableToArrayLimit.js","./unsupportedIterableToArray":"node_modules/@babel/runtime/helpers/unsupportedIterableToArray.js","./nonIterableRest":"node_modules/@babel/runtime/helpers/nonIterableRest.js"}],"node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
 var bundleURL = null;
 
 function getBundleURLCached() {
@@ -29733,7 +29668,111 @@ function GuardGroup(_ref) {
 
 var _default = GuardGroup;
 exports.default = _default;
-},{"@babel/runtime/helpers/toConsumableArray":"node_modules/@babel/runtime/helpers/toConsumableArray.js","@babel/runtime/helpers/defineProperty":"node_modules/@babel/runtime/helpers/defineProperty.js","@babel/runtime/helpers/slicedToArray":"node_modules/@babel/runtime/helpers/slicedToArray.js","react":"node_modules/react/index.js","./Icon":"src/components/Icon.js","./Select":"src/components/Select.js","./MultiSelect":"src/components/MultiSelect.js"}],"src/lib/genId.js":[function(require,module,exports) {
+},{"@babel/runtime/helpers/toConsumableArray":"node_modules/@babel/runtime/helpers/toConsumableArray.js","@babel/runtime/helpers/defineProperty":"node_modules/@babel/runtime/helpers/defineProperty.js","@babel/runtime/helpers/slicedToArray":"node_modules/@babel/runtime/helpers/slicedToArray.js","react":"node_modules/react/index.js","./Icon":"src/components/Icon.js","./Select":"src/components/Select.js","./MultiSelect":"src/components/MultiSelect.js"}],"src/components/AppSidebar.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = AppSidebar;
+
+var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
+
+var _react = _interopRequireWildcard(require("react"));
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function AppSidebar(_ref) {
+  var save = _ref.save,
+      isLoading = _ref.isLoading;
+
+  var _useState = (0, _react.useState)(false),
+      _useState2 = (0, _slicedToArray2.default)(_useState, 2),
+      isFixed = _useState2[0],
+      setIsFixed = _useState2[1];
+
+  var box = (0, _react.useRef)(null);
+  var column = (0, _react.useRef)(null);
+
+  var _useState3 = (0, _react.useState)(0),
+      _useState4 = (0, _slicedToArray2.default)(_useState3, 2),
+      boxWidth = _useState4[0],
+      setBoxWidth = _useState4[1];
+
+  var _useState5 = (0, _react.useState)(window.innerWidth),
+      _useState6 = (0, _slicedToArray2.default)(_useState5, 2),
+      windowWidth = _useState6[0],
+      setWindowWidth = _useState6[1];
+
+  (0, _react.useLayoutEffect)(function () {
+    var cb = function cb() {
+      return setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", cb);
+    return function () {
+      window.removeEventListener("resize", cb);
+    };
+  }, []);
+  (0, _react.useLayoutEffect)(function () {
+    if (!column) return;
+    setBoxWidth(column.current.getBoundingClientRect().width);
+  }, [windowWidth, column]);
+  (0, _react.useLayoutEffect)(function () {
+    var options = {
+      rootMargin: "0px",
+      threshold: [0, 0.05, 0.1, 0.15, 0.2, 1.0]
+    };
+
+    function callback(entries) {
+      entries.forEach(function (_ref2) {
+        var boundingClientRect = _ref2.boundingClientRect;
+
+        if (boundingClientRect.top <= 0) {
+          setIsFixed(true);
+        } else {
+          setIsFixed(false);
+        }
+      });
+    }
+
+    var observer = new IntersectionObserver(callback, options);
+    var target = box.current;
+    observer.observe(target);
+    return function () {
+      observer.unobserve(target);
+    };
+  }, []);
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "util-column",
+    ref: column,
+    style: {
+      outline: "1px solid red"
+    }
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    ref: box,
+    style: {
+      marginTop: "-42px",
+      paddingTop: "42px"
+    }
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "cloudbox",
+    style: {
+      position: isFixed ? "fixed" : "unset",
+      width: isFixed ? "".concat(boxWidth, "px") : "100%",
+      top: isFixed ? "42px" : "unset"
+    }
+  }, /*#__PURE__*/_react.default.createElement("h3", null, "Save Your Redirects"), /*#__PURE__*/_react.default.createElement("button", {
+    type: "button",
+    className: "primary-button",
+    onClick: save
+  }, "SAVE"))));
+}
+},{"@babel/runtime/helpers/slicedToArray":"node_modules/@babel/runtime/helpers/slicedToArray.js","react":"node_modules/react/index.js"}],"src/lib/genId.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29938,11 +29977,11 @@ var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/sli
 
 var _react = _interopRequireWildcard(require("react"));
 
-var _data = _interopRequireDefault(require("./data.json"));
-
 require("./App.css");
 
 var _GuardGroup = _interopRequireDefault(require("./components/GuardGroup"));
+
+var _AppSidebar = _interopRequireDefault(require("./components/AppSidebar"));
 
 var _Icon = _interopRequireDefault(require("./components/Icon.js"));
 
@@ -30112,18 +30151,14 @@ function App() {
     className: "icon-container"
   }, /*#__PURE__*/_react.default.createElement(_Icon.default, {
     name: "add"
-  })), /*#__PURE__*/_react.default.createElement("span", null, "Add Redirect"))), /*#__PURE__*/_react.default.createElement("div", {
-    className: "util-column"
-  }, /*#__PURE__*/_react.default.createElement("button", {
-    type: "button",
-    className: "primary-button",
-    onClick: saveToDB
-  }, "SAVE"))));
+  })), /*#__PURE__*/_react.default.createElement("span", null, "Add Redirect"))), /*#__PURE__*/_react.default.createElement(_AppSidebar.default, {
+    save: saveToDB
+  })));
 }
 
 var _default = App;
 exports.default = _default;
-},{"@babel/runtime/regenerator":"node_modules/@babel/runtime/regenerator/index.js","@babel/runtime/helpers/toConsumableArray":"node_modules/@babel/runtime/helpers/toConsumableArray.js","@babel/runtime/helpers/defineProperty":"node_modules/@babel/runtime/helpers/defineProperty.js","@babel/runtime/helpers/asyncToGenerator":"node_modules/@babel/runtime/helpers/asyncToGenerator.js","@babel/runtime/helpers/slicedToArray":"node_modules/@babel/runtime/helpers/slicedToArray.js","react":"node_modules/react/index.js","./data.json":"src/data.json","./App.css":"src/App.css","./components/GuardGroup":"src/components/GuardGroup.js","./components/Icon.js":"src/components/Icon.js","./lib":"src/lib/index.js","./api":"src/api/index.js"}],"src/index.js":[function(require,module,exports) {
+},{"@babel/runtime/regenerator":"node_modules/@babel/runtime/regenerator/index.js","@babel/runtime/helpers/toConsumableArray":"node_modules/@babel/runtime/helpers/toConsumableArray.js","@babel/runtime/helpers/defineProperty":"node_modules/@babel/runtime/helpers/defineProperty.js","@babel/runtime/helpers/asyncToGenerator":"node_modules/@babel/runtime/helpers/asyncToGenerator.js","@babel/runtime/helpers/slicedToArray":"node_modules/@babel/runtime/helpers/slicedToArray.js","react":"node_modules/react/index.js","./App.css":"src/App.css","./components/GuardGroup":"src/components/GuardGroup.js","./components/AppSidebar":"src/components/AppSidebar.js","./components/Icon.js":"src/components/Icon.js","./lib":"src/lib/index.js","./api":"src/api/index.js"}],"src/index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
@@ -30180,7 +30215,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56099" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55790" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -13,13 +13,13 @@ body * {
 }
 .App {
   min-height: 100vh;
-  max-width: 900px;
-  margin: 0 auto;
+  padding-right: 38px;
 }
 .App .plugin-body {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 200px;
+  grid-template-columns: minmax(0, 1fr) minmax(200px, 0.35fr);
   column-gap: 20px;
+  justify-content: space-between;
 }
 .primary-button {
   background: var(--primary);
@@ -62,10 +62,14 @@ svg {
   width: 15px;
 }
 .wrapper {
-  min-height: 500px;
+  max-width: 800px;
   width: 100%;
 }
-.guard-group {
+.util-column div h3 {
+  margin-top: 0;
+}
+.guard-group,
+.util-column .cloudbox {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
   padding: 15px;
   margin-bottom: 20px;

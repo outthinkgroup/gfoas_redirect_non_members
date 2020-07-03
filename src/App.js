@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import Data from "./data.json";
 import "./App.css";
 import GaurdGroup from "./components/GuardGroup";
+import AppSidebar from "./components/AppSidebar";
 import Icon from "./components/Icon.js";
 import { genId } from "./lib";
 
@@ -89,11 +89,7 @@ function App() {
             <span>Add Redirect</span>
           </button>
         </div>
-        <div className="util-column">
-          <button type="button" className="primary-button" onClick={saveToDB}>
-            SAVE
-          </button>
-        </div>
+        <AppSidebar save={saveToDB} />
       </div>
     </div>
   );
