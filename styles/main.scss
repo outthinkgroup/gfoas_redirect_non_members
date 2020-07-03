@@ -1,0 +1,12 @@
+//main.scss
+body {
+  box-sizing: border-box;
+  *,
+  *:after,
+  *:before {
+    box-sizing: inherit;
+  }
+}
+.settings-page {
+  padding-right: 15px;
+}

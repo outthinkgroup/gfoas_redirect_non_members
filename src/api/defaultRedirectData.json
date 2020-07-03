@@ -1,0 +1,7 @@
+{
+  "type": "post",
+  "guard_specific": false,
+  "posts_to_guard": [],
+  "settings_id": "group-2",
+  "redirects_to": "/"
+}

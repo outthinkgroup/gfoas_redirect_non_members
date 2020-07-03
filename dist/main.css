@@ -1,0 +1,282 @@
+:root {
+  --danger: #e3342f;
+  --success: #38c172;
+  --warn: #ffed4a;
+  --primary: #0073aa;
+}
+body {
+  box-sizing: border-box;
+  background: #eaeaea;
+}
+body * {
+  box-sizing: inherit;
+}
+.App {
+  min-height: 100vh;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.App .plugin-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 200px;
+  column-gap: 20px;
+}
+.primary-button {
+  background: var(--primary);
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+  border: 1px solid transparent;
+  padding: 5px 10px;
+  border-radius: 2px;
+  cursor: pointer;
+}
+svg {
+  width: 100%;
+}
+.add-redirect {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 18px;
+  font-weight: 600;
+  border: 1px solid transparent;
+  color: white;
+  fill: white;
+  background: var(--success);
+  padding: 5px 10px;
+  border-radius: 2px;
+  cursor: pointer;
+  margin-left: auto;
+}
+.add-redirect:hover {
+  background: var(--success);
+}
+.icon-container {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+  width: 1em;
+}
+.add-redirect svg {
+  width: 15px;
+}
+.wrapper {
+  min-height: 500px;
+  width: 100%;
+}
+.guard-group {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  padding: 15px;
+  margin-bottom: 20px;
+  background: white;
+  border-radius: 8px;
+}
+label {
+  font-weight: 600;
+}
+.guarding {
+  display: flex;
+  justify-content: space-between;
+}
+.guarding .input-group {
+  width: 100%;
+  padding: 10px;
+}
+.guarding .input-group .input-group {
+  padding-left: 0;
+  padding-right: 20px;
+}
+.guarding .input-group--small {
+  width: 375px;
+}
+.guarding label {
+  display: block;
+}
+select,
+input[type="text"] {
+  width: 100%;
+  padding: 10px;
+}
+.multi-select .box {
+  border: 1px solid #787878;
+  border-radius: 4px;
+}
+.multi-select .box input {
+  border: 1px solid transparent;
+}
+.multi-select form {
+  display: flex;
+}
+.multi-select form {
+  position: relative;
+}
+.multi-select .box .multi-select-input {
+  position: relative;
+}
+
+.multi-select .box .multi-select-input:focus {
+  border: 1px solid transparent;
+  outline: none;
+  background: #fafafa;
+  box-shadow: none;
+}
+
+.multi-select #values {
+  position: absolute;
+  width: 100%;
+  top: 100%;
+  left: 0;
+  max-height: 200px;
+  background: white;
+  box-shadow: 0 50px 100px rgba(50, 50, 93, 0.1),
+    0 15px 35px rgba(50, 50, 93, 0.15), 0 5px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+.multi-select #values li {
+  padding: 0;
+  margin: 0;
+}
+.multi-select #values li button {
+  padding: 5px 10px;
+  background: transparent;
+  border: none;
+  width: 100%;
+  text-align: left;
+  color: inherit;
+}
+.multi-select .box form:after {
+  content: "";
+  height: 1px;
+  width: 90%;
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  background: #878787;
+  z-index: 3;
+}
+.multi-select .addButton {
+  border: 1px solid transparent;
+  position: absolute;
+  height: calc(100% - 4px);
+  right: 2px;
+  top: 2px;
+  z-index: 2;
+  display: none;
+}
+.multi-select .addButton:hover {
+  background: #e5e5e5;
+  cursor: pointer;
+}
+.multi-select form:focus-within .addButton {
+  display: unset;
+}
+.list-box {
+  height: 200px;
+  overflow-y: scroll;
+  list-style: none;
+  margin: 0;
+  margin-top: 10px;
+  padding: 0;
+  border-radius: 4px;
+}
+.list-box li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+  font-size: 18px;
+}
+.list-box li:hover {
+  background: #eaeaea;
+}
+.multi-select .list-box li button {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  outline: none;
+  border: 1px solid var(--danger);
+  border-radius: 50%;
+  width: 23px;
+  height: 23px;
+  fill: var(--danger);
+}
+.multi-select .list-box li button:hover {
+  background: var(--danger);
+  border-color: transparent;
+  fill: white;
+  cursor: pointer;
+}
+.list-box li button svg {
+  width: 100%;
+}
+.list-box li:hover button {
+  display: flex;
+}
+
+.multi-select form {
+  display: flex;
+}
+.guard-group {
+  position: relative;
+}
+.guard-group > .guarding {
+  margin-bottom: 45px;
+}
+.guard-group .util-section {
+  display: flex;
+  background: #efefef;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding: 5px 10px;
+  border-radius: 0px 0px 8px 8px;
+}
+.util-section .util-button {
+  /* shape & type */
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  line-height: 1;
+  padding: 7px 10px;
+
+  opacity: 0.2;
+
+  /* color */
+  color: var(--button-color, var(--primary));
+  border: 1px solid currentColor;
+  fill: currentColor;
+  background: transparent;
+  border-radius: 2px;
+}
+.util-section .util-button:hover {
+  background: var(--button-color);
+  color: white;
+  cursor: pointer;
+}
+.guard-group .util-section:hover .util-button {
+  opacity: 1;
+}
+.util-button.delete {
+  --button-color: var(--danger);
+}
+
+body {
+  box-sizing: border-box;
+}
+body *,
+body *:after,
+body *:before {
+  box-sizing: inherit;
+}
+
+.settings-page {
+  padding-right: 15px;
+}
+
+/*# sourceMappingURL=/main.css.map */

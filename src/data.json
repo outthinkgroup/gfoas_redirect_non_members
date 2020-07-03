@@ -1,0 +1,60 @@
+{
+  "redirects": [
+    {
+      "type": "recipe",
+      "guard_specific": true,
+      "posts_to_guard": [
+        {
+          "name": "Cakes",
+          "id": 99
+        },
+        {
+          "name": "waffles",
+          "id": 33
+        },
+        {
+          "name": "brownies",
+          "id": 104
+        }
+      ],
+      "settings_id": "group-1",
+      "redirects_to": "/"
+    }
+  ],
+  "post_types": ["post", "page", "recipe", "course"],
+  "posts_in": {
+    "post": [
+      { "id": 23, "name": "hello world" },
+      { "id": 54, "name": "my first post" },
+      { "id": 3, "name": "post number 3" }
+    ],
+    "page": [
+      { "id": 24, "name": "home" },
+      { "id": 255, "name": "about" },
+      { "id": 4, "name": "contact" }
+    ],
+    "recipe": [
+      {
+        "name": "Cakes",
+        "id": 99
+      },
+      {
+        "name": "waffles",
+        "id": 33
+      },
+      {
+        "name": "brownies",
+        "id": 104
+      },
+      {
+        "name": "free sample",
+        "id": 900
+      }
+    ],
+    "course": [
+      { "id": 36, "name": "breakfast fast course" },
+      { "id": 57, "name": "bread couse" },
+      { "id": 105, "name": "flour course" }
+    ]
+  }
+}
