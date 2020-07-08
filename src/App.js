@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
-import GaurdGroup from "./components/GuardGroup";
+import GuardGroup from "./components/GuardGroup";
 import AppSidebar from "./components/AppSidebar";
 import Icon from "./components/Icon.js";
+import Skeleton from "./components/Skeleton";
 import { genId } from "./lib";
 
 import {
@@ -10,7 +11,7 @@ import {
   getAllData,
   saveRedirects,
 } from "./api";
-
+import { AnimatePresence, AnimateSharedLayout } from "framer-motion";
 function App() {
   const [redirects, setRedirectsState] = useState([]);
   const [globalPostsIn, setGlobalPostsIn] = useState({});
@@ -34,7 +35,9 @@ function App() {
     };
     setRedirectsState((prev) => [...prev, newRedirect]);
   }
+  const [isSaving, setIsSaving] = useState(false);
   async function saveToDB() {
+    setIsSaving(true);
     const saved = await saveRedirects(redirects);
     if (saved.err) {
       console.log("ERROR", saved.err);
@@ -42,6 +45,7 @@ function App() {
       //show success message
       console.log("success");
     }
+    setIsSaving(false);
   }
   function deleteRedirect(id) {
     const updatedRedirects = [...redirects];
@@ -59,7 +63,7 @@ function App() {
     updatedRedirects.splice(editedRedirectIndex, 1, newRedirect);
     setRedirectsState((prev) => [...updatedRedirects]);
   }
-  function fetchAllPostInType(type) {
+  function fetchInitialPostInType(type) {
     return globalPostsIn[type];
   }
   return (
@@ -68,28 +72,38 @@ function App() {
 
       <div className="plugin-body">
         <div className="wrapper">
-          {redirects &&
-            redirects.map((redirect) => {
+          {postTypes.length > 0 ? (
+            redirects &&
+            redirects.map((redirect, index) => {
               return (
-                <GaurdGroup
+                <GuardGroup
+                  isFirst={index === 0}
                   key={redirect.settings_id}
                   groupSettings={redirect}
                   allPostTypes={postTypes}
                   /* replace with fetch call to get posts in post type */
-                  fetchAllPostInType={fetchAllPostInType}
+                  fetchInitialPostInType={fetchInitialPostInType}
                   updateState={updateFormState}
                   deleteRedirect={() => deleteRedirect(redirect.settings_id)}
                 />
               );
-            })}
-          <button className="add-redirect" type="button" onClick={addRedirect}>
+            })
+          ) : (
+            <Skeleton key="skeleton" />
+          )}
+          <button
+            key="add-button"
+            className="add-redirect"
+            type="button"
+            onClick={addRedirect}
+          >
             <div className="icon-container">
               <Icon name="add" />
             </div>
             <span>Add Redirect</span>
           </button>
         </div>
-        <AppSidebar save={saveToDB} />
+        <AppSidebar save={saveToDB} saving={isSaving} />
       </div>
     </div>
   );

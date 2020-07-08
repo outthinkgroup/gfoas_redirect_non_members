@@ -80,6 +80,9 @@ svg {
   background: white;
   border-radius: 8px;
 }
+.guard-group {
+  padding-top: 5px;
+}
 label {
   font-weight: 600;
 }
@@ -89,11 +92,12 @@ label {
 }
 .guarding .input-group {
   width: 100%;
-  padding: 10px;
+  padding: 10px 20px 10px 0px;
+}
+.guard-group > .guarding > .input-group:not(:first-child) {
+  padding-right: 0px;
 }
 .guarding .input-group .input-group {
-  padding-left: 0;
-  padding-right: 20px;
   padding-top: 0;
 }
 .guarding .input-group--small {
@@ -137,17 +141,21 @@ input[type="text"] {
   top: 100%;
   left: 0;
   max-height: 200px;
+  overflow-y: scroll;
   background: white;
   box-shadow: 0 50px 100px rgba(50, 50, 93, 0.1),
     0 15px 35px rgba(50, 50, 93, 0.15), 0 5px 15px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
+  border-radius: 4px;
 }
 .multi-select #values li {
   padding: 0;
   margin: 0;
 }
-.multi-select #values li button {
+.multi-select #values li button,
+.multi-select #values li.fake-option {
   padding: 5px 10px;
+}
+.multi-select #values li button {
   background: transparent;
   border: none;
   width: 100%;
@@ -231,8 +239,32 @@ input[type="text"] {
 .guard-group {
   position: relative;
 }
-.guard-group > .guarding {
+.guard-group > .guarding,
+.guard-group > .collapsed-view {
   margin-bottom: 45px;
+}
+.guard-group h3 {
+  margin: 10px 0;
+}
+.guard-group .collapse {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.guard-group .collapse button {
+  line-height: 0;
+  border-radius: 3px;
+  outline: none;
+  border: 1px solid transparent;
+  box-shadow: none;
+  background: #fafafa;
+  fill: #878787;
+}
+.collapse button:hover {
+  background: var(--secondary);
+}
+.collapse button svg {
+  width: 30px;
 }
 .guard-group .util-section {
   display: flex;
@@ -273,4 +305,25 @@ input[type="text"] {
 }
 .util-button.delete {
   --button-color: var(--danger);
+}
+.skeleton {
+  width: 100%;
+}
+.skeleton .skeleton-child {
+  width: 100%;
+  border-radius: 8px;
+  height: 212px;
+  background: var(--secondary-hover);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  margin-bottom: 30px;
+  animation: flutter 0.5s linear calc(var(--skeleton-child-index) * 0.25s)
+    infinite alternate both;
+}
+@keyframes flutter {
+  0% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 0.9;
+  }
 }

@@ -9,7 +9,7 @@ if(!class_exists( 'Redirect_Non_GFOAS_Members' )){
     }
     private function create_option_key(){
       if(!get_option('redirect_post_types')){
-        update_option('redirect_post_types');
+        update_option('redirect_post_types', []);
       }
     }
   } //?class end
@@ -60,7 +60,7 @@ class Redirect_Options_Page {
 
 class Redirect_Post_Types{
   function __construct(){
-    add_action('template_redirect', array($this,'redirect'));
+    add_action('wp', array($this,'redirect'), 999);
   }
   function redirect(){
     global $post;

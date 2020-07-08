@@ -1,6 +1,6 @@
 import React, { useState, useLayoutEffect, useRef } from "react";
 
-export default function AppSidebar({ save, isLoading }) {
+export default function AppSidebar({ save, saving }) {
   const [isFixed, setIsFixed] = useState(false);
   const box = useRef(null);
   const column = useRef(null);
@@ -52,7 +52,7 @@ export default function AppSidebar({ save, isLoading }) {
         >
           <h3>Save Your Redirects</h3>
           <button type="button" className="primary-button" onClick={save}>
-            SAVE
+            Sav{saving ? "ing" : "e"}
           </button>
         </div>
       </div>

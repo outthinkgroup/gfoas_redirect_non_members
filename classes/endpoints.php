@@ -15,6 +15,10 @@ class Redirect_Settings_Endpoints{
 			'callback' => 'Redirect_Settings_Endpoints::update_settings',
 			'args'		=> []	
     ));
+    register_rest_route('gfoas/v1', 'get-posts-in-type', array(
+      'methods' =>  'POST',
+      'callback'=>  'Redirect_Settings_Endpoints::get_posts_in_type',
+    ));
   }
   static function get_settings(){
     $res = [];
@@ -54,17 +58,22 @@ class Redirect_Settings_Endpoints{
         'numberposts' => 10,
         'post_type'   => $type,
       ]);
-      $posts_name_and_id = [];
-      foreach($posts as $post){
-        $posts_name_and_id[] = [
-          'id'   => $post->ID,
-          'name' => $post->post_title,
-          'type' => $post->post_type
-        ];
-      }
+      $posts_name_and_id = Redirect_Settings_Endpoints::format_posts($posts);
       $posts_in[$type] = $posts_name_and_id;
     }
     return $posts_in;
+  }
+
+  static function format_posts($posts){
+    $posts_name_and_id = [];
+    foreach($posts as $post){
+      $posts_name_and_id[] = [
+        'id'   => $post->ID,
+        'name' => $post->post_title,
+        'type' => $post->post_type
+      ];
+    }
+    return $posts_name_and_id;
   }
 
   static function update_settings(){
@@ -84,7 +93,28 @@ class Redirect_Settings_Endpoints{
 	  return $response;
   }
 
+  static function get_posts_in_type(){
+    $json = file_get_contents('php://input');
+    $data = json_decode($json);
+
+    $type = $data->type;
+    $search = $data->searchVal;
+
+    $posts = get_posts([
+      'numberposts' => 10,
+      'post_type'   => $type,
+      's' => $search,
+    ]);
+    $posts_name_and_id = Redirect_Settings_Endpoints::format_posts($posts);
+
+    $response = new WP_REST_Response($posts_name_and_id);
+	  $response->set_status(200); 
+	  return $response;
+  }
+
 }
+
+
 function __validate_cookies($cookies){
   $pattern = '/wordpress_logged_in_/';
   $keys = array_keys($cookies);

@@ -1,7 +1,15 @@
 import React, { useState, useEffect, useRef } from "react";
 import Icon from "./Icon";
 
-export default function ({ values, options, label, addItem, deleteItem }) {
+export default function ({
+  values,
+  options,
+  label,
+  addItem,
+  deleteItem,
+  fetchNewPosts,
+  fetchingPosts,
+}) {
   const [inputVal, setInputVal] = useState("");
   const [isShowOptions, setIsShowOptions] = useState(false);
   const [highLightedIndex, setHighLightedIndex] = useState(0);
@@ -51,9 +59,9 @@ export default function ({ values, options, label, addItem, deleteItem }) {
       );
     }
   }
-  useEffect(() => {
-    setInputVal("");
-  }, [options]);
+  // useEffect(() => {
+  //   setInputVal("");
+  // }, [options]);
   return (
     <div className="multi-select">
       <label>{label}</label>
@@ -64,7 +72,10 @@ export default function ({ values, options, label, addItem, deleteItem }) {
               type="text"
               value={inputVal}
               className="multi-select-input"
-              onChange={(e) => setInputVal(e.target.value)}
+              onChange={(e) => {
+                fetchNewPosts(e.target.value);
+                setInputVal(e.target.value);
+              }}
               list="values"
               onKeyDown={keyDown}
               onFocus={() => setIsShowOptions(true)}
@@ -89,7 +100,8 @@ export default function ({ values, options, label, addItem, deleteItem }) {
                     key={id}
                     onMouseEnter={() => setHighLightedIndex(index)}
                     style={{
-                      background: highLightedIndex === index ? "blue" : "white",
+                      background:
+                        highLightedIndex === index ? "var(--primary)" : "white",
                       color: highLightedIndex === index ? `white` : `black`,
                     }}
                   >
@@ -104,6 +116,10 @@ export default function ({ values, options, label, addItem, deleteItem }) {
                   </li>
                 );
               })}
+            {fetchingPosts && <li className="fake-option">loading posts...</li>}
+            {filteredOptions.length == 0 && !fetchingPosts && (
+              <li className="fake-option">no posts found</li>
+            )}
           </ul>
         </form>
         <ul className="list-box">
