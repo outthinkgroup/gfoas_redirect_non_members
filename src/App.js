@@ -11,7 +11,7 @@ import {
   getAllData,
   saveRedirects,
 } from "./api";
-import { AnimatePresence, AnimateSharedLayout } from "framer-motion";
+
 function App() {
   const [redirects, setRedirectsState] = useState([]);
   const [globalPostsIn, setGlobalPostsIn] = useState({});
@@ -42,7 +42,7 @@ function App() {
     if (saved.err) {
       console.log("ERROR", saved.err);
     } else {
-      //show success message
+      //TODO: show success message
       console.log("success");
     }
     setIsSaving(false);

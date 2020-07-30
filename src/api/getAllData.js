@@ -6,6 +6,5 @@ export async function getAllData() {
   })
     .then((res) => res.json())
     .catch((e) => console.log(e));
-  console.log(data);
   return data;
 }

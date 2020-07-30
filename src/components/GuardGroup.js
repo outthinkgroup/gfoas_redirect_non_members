@@ -25,7 +25,6 @@ function GuardGroup({
   useEffect(() => {
     const postInType = fetchInitialPostInType(type);
     setAllPostsInType(postInType);
-    console.log(allPostsInType);
   }, [type, allPostTypes]);
 
   function updateRedirect(key, value) {
@@ -65,9 +64,7 @@ function GuardGroup({
       return;
     }
     setFetchingPosts(true);
-    console.log(getPostsInType);
     const fetchedPosts = await getPostsInType(type, searchVal);
-    console.log(fetchedPosts);
     setAllPostsInType(fetchedPosts);
     setFetchingPosts(false);
   }

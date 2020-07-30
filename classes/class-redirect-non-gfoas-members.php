@@ -60,7 +60,7 @@ class Redirect_Options_Page {
 
 class Redirect_Post_Types{
   function __construct(){
-    add_action('wp', array($this,'redirect'), 999);
+    add_action('wp', array($this,'redirect'), 1);//has to be earlier than woo memberships
   }
   function redirect(){
     global $post;
@@ -92,6 +92,7 @@ class Redirect_Post_Types{
 
       $new_location = $redirect->redirects_to;
       header('Location: ' . $new_location);
+      die('died on line 95');
       exit;
     }
 

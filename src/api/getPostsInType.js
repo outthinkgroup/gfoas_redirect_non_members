@@ -1,4 +1,4 @@
-import { debounce } from "../lib";
+// import { debounce } from "../lib";
 const ENDPOINT = "/wp-json/gfoas/v1/get-posts-in-type";
 export async function getPostsInType(type, searchVal) {
   const body = JSON.stringify({ type, searchVal });
@@ -7,7 +7,5 @@ export async function getPostsInType(type, searchVal) {
     body,
     credentials: "same-origin",
   }).then((res) => res.json());
-  console.log(data);
   return data;
 }
-export function debouncedGetPostsInType(type, searchVal) {}

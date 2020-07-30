@@ -1,4 +1,4 @@
-export default function debounce(func, wait, immediate) {
+export function debounce(func, wait, immediate) {
   var timeout, args, context, timestamp, result;
   if (null == wait) wait = 100;
 
@@ -48,4 +48,22 @@ export default function debounce(func, wait, immediate) {
   };
 
   return debounced;
+}
+export function _debounce(func, wait, immediate) {
+
+  let timeout;
+  return function () {
+    let context = this;
+    let args = arguments;
+
+    const later = () => {
+      timeout = null;
+      if (!immediate) func.apply(context, args);
+    };
+    const callNow = immediate && !timeout;
+
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+    if (callNow) func.apply(context, args);
+  };
 }

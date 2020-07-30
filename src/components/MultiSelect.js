@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import Icon from "./Icon";
+import { _debounce as debounce } from "../lib/debounce";
 
 export default function ({
   values,
@@ -32,7 +33,6 @@ export default function ({
   function insertGuardedPost(e, val) {
     e.preventDefault();
     let post = false;
-    console.log("ran");
     if (filteredOptions[highLightedIndex]) {
       post = options.find(
         (post) => filteredOptions[highLightedIndex].name === post.name
@@ -49,7 +49,6 @@ export default function ({
   }
   function keyDown(e) {
     setIsShowOptions(true);
-    console.log(highLightedIndex);
     if (e.key === "ArrowUp") {
       e.preventDefault();
       setHighLightedIndex((prev) => (prev === 0 ? 0 : prev - 1));
@@ -73,14 +72,13 @@ export default function ({
               value={inputVal}
               className="multi-select-input"
               onChange={(e) => {
-                fetchNewPosts(e.target.value);
+                debounce(fetchNewPosts(e.target.value), 300);
                 setInputVal(e.target.value);
               }}
               list="values"
               onKeyDown={keyDown}
               onFocus={() => setIsShowOptions(true)}
               onBlur={() => {
-                console.log("unfocused");
                 setTimeout(() => setIsShowOptions(false), 160);
               }}
             />
