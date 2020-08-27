@@ -78,6 +78,12 @@ class Redirect_Post_Types{
         continue;
       }
       
+      $redirect_id = url_to_postid($redirect->redirects_to);
+      if($redirect_id === $id){
+
+        break;
+      }
+
       if($redirect->guard_specific === true ){
         foreach( $redirect->posts_to_guard as $guarded_post ){
           
