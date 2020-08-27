@@ -36,7 +36,7 @@ class Redirect_Settings_Endpoints{
 	  $response->set_status(200); 
 	  return $response;
   }
-  private function get_post_type_list(){
+  static private function get_post_type_list(){
     $args = array(
     'public'   => true,
     );
@@ -51,7 +51,7 @@ class Redirect_Settings_Endpoints{
     return $post_types;
   }
 
-  private function get_firsts_posts_per($post_types){
+  static private function get_firsts_posts_per($post_types){
     $posts_in = [];
     foreach($post_types as $type){
       $posts = get_posts([
