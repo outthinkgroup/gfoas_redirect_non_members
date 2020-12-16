@@ -77,6 +77,12 @@ class Redirect_Post_Types{
       if($redirect->type !== $type){
         continue;
       }
+
+      //Guard All Except these posts
+      //TODO: remove hardcoded ID, replace with dynamic stored value
+      if($id === 9051){
+        break;
+      }
       
       $redirect_id = url_to_postid($redirect->redirects_to);
       if($redirect_id === $id){
